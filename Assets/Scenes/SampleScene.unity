@@ -613,8 +613,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1319246288572476124, guid: de205d0d41859824a9eccab751120dc0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1842687055}
   m_SourcePrefab: {fileID: 100100000, guid: de205d0d41859824a9eccab751120dc0, type: 3}
+--- !u!1 &1842687054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1319246288572476124, guid: de205d0d41859824a9eccab751120dc0, type: 3}
+  m_PrefabInstance: {fileID: 1842687053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1842687055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842687054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695b5eee703e3ad41b28bbfa32b0599e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wheater
 --- !u!1 &1951416993
 GameObject:
   m_ObjectHideFlags: 0

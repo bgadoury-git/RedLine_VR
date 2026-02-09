@@ -35,41 +35,29 @@ public class GenerateMap : MonoBehaviour
         floorMaterial.color = new Color(0.4f, 0.3f, 0.2f);
         floor.GetComponent<Renderer>().material = floorMaterial;
 
+        Material wallMaterial = new Material(Shader.Find("Unlit/Color"));
+        wallMaterial.color = new Color(0.5f, 0.35f, 0.2f);
+
         GameObject backWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
         backWall.name = "Back Wall";
         backWall.transform.parent = cabin.transform;
         backWall.transform.localPosition = new Vector3(0f, 2f, -3f);
         backWall.transform.localScale = new Vector3(8f, 3.8f, 0.2f);
-        Material wallMaterial = new Material(Shader.Find("Unlit/Color"));
-        wallMaterial.color = new Color(0.5f, 0.35f, 0.2f);
         backWall.GetComponent<Renderer>().material = wallMaterial;
 
-        GameObject frontWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        frontWall.name = "Front Wall";
-        frontWall.transform.parent = cabin.transform;
-        frontWall.transform.localPosition = new Vector3(0f, 2f, 3f);
-        frontWall.transform.localScale = new Vector3(8f, 3.8f, 0.2f);
-        Material wallMaterial2 = new Material(Shader.Find("Unlit/Color"));
-        wallMaterial2.color = new Color(0.5f, 0.35f, 0.2f);
-        frontWall.GetComponent<Renderer>().material = wallMaterial2;
+        CreateWallSection("Front Wall Left", cabin.transform, new Vector3(-2.25f, 2f, 3f), new Vector3(3.5f, 3.8f, 0.2f), wallMaterial);
+        CreateWallSection("Front Wall Right", cabin.transform, new Vector3(2.25f, 2f, 3f), new Vector3(3.5f, 3.8f, 0.2f), wallMaterial);
+        CreateWallSection("Front Wall Top", cabin.transform, new Vector3(0f, 2.9f, 3f), new Vector3(1f, 1.8f, 0.2f), wallMaterial);
 
-        GameObject leftWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        leftWall.name = "Left Wall";
-        leftWall.transform.parent = cabin.transform;
-        leftWall.transform.localPosition = new Vector3(-4f, 2f, 0f);
-        leftWall.transform.localScale = new Vector3(0.2f, 3.8f, 6f);
-        Material wallMaterial3 = new Material(Shader.Find("Unlit/Color"));
-        wallMaterial3.color = new Color(0.5f, 0.35f, 0.2f);
-        leftWall.GetComponent<Renderer>().material = wallMaterial3;
+        CreateWallSection("Left Wall Bottom", cabin.transform, new Vector3(-4f, 0.9f, 0f), new Vector3(0.2f, 1.6f, 6f), wallMaterial);
+        CreateWallSection("Left Wall Top", cabin.transform, new Vector3(-4f, 3.3f, 0f), new Vector3(0.2f, 1.2f, 6f), wallMaterial);
+        CreateWallSection("Left Wall Front", cabin.transform, new Vector3(-4f, 2.2f, -1.3f), new Vector3(0.2f, 1f, 3.4f), wallMaterial);
+        CreateWallSection("Left Wall Back", cabin.transform, new Vector3(-4f, 2.2f, 2.3f), new Vector3(0.2f, 1f, 1.4f), wallMaterial);
 
-        GameObject rightWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        rightWall.name = "Right Wall";
-        rightWall.transform.parent = cabin.transform;
-        rightWall.transform.localPosition = new Vector3(4f, 2f, 0f);
-        rightWall.transform.localScale = new Vector3(0.2f, 3.8f, 6f);
-        Material wallMaterial4 = new Material(Shader.Find("Unlit/Color"));
-        wallMaterial4.color = new Color(0.5f, 0.35f, 0.2f);
-        rightWall.GetComponent<Renderer>().material = wallMaterial4;
+        CreateWallSection("Right Wall Bottom", cabin.transform, new Vector3(4f, 0.9f, 0f), new Vector3(0.2f, 1.6f, 6f), wallMaterial);
+        CreateWallSection("Right Wall Top", cabin.transform, new Vector3(4f, 3.3f, 0f), new Vector3(0.2f, 1.2f, 6f), wallMaterial);
+        CreateWallSection("Right Wall Front", cabin.transform, new Vector3(4f, 2.2f, -1.3f), new Vector3(0.2f, 1f, 3.4f), wallMaterial);
+        CreateWallSection("Right Wall Back", cabin.transform, new Vector3(4f, 2.2f, 2.3f), new Vector3(0.2f, 1f, 1.4f), wallMaterial);
 
         GameObject roof = GameObject.CreatePrimitive(PrimitiveType.Cube);
         roof.name = "Roof";
@@ -79,33 +67,16 @@ public class GenerateMap : MonoBehaviour
         Material roofMaterial = new Material(Shader.Find("Unlit/Color"));
         roofMaterial.color = new Color(0.3f, 0.2f, 0.15f);
         roof.GetComponent<Renderer>().material = roofMaterial;
+    }
 
-        GameObject door = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        door.name = "Door";
-        door.transform.parent = cabin.transform;
-        door.transform.localPosition = new Vector3(0f, 1f, 3.05f);
-        door.transform.localScale = new Vector3(1f, 2f, 0.1f);
-        Material doorMaterial = new Material(Shader.Find("Unlit/Color"));
-        doorMaterial.color = new Color(0.25f, 0.15f, 0.1f);
-        door.GetComponent<Renderer>().material = doorMaterial;
-
-        GameObject window1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        window1.name = "Window 1";
-        window1.transform.parent = cabin.transform;
-        window1.transform.localPosition = new Vector3(-4.05f, 2.2f, 1f);
-        window1.transform.localScale = new Vector3(0.1f, 1f, 1.2f);
-        Material windowMaterial = new Material(Shader.Find("Unlit/Color"));
-        windowMaterial.color = new Color(0.6f, 0.8f, 0.9f);
-        window1.GetComponent<Renderer>().material = windowMaterial;
-
-        GameObject window2 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        window2.name = "Window 2";
-        window2.transform.parent = cabin.transform;
-        window2.transform.localPosition = new Vector3(4.05f, 2.2f, 1f);
-        window2.transform.localScale = new Vector3(0.1f, 1f, 1.2f);
-        Material windowMaterial2 = new Material(Shader.Find("Unlit/Color"));
-        windowMaterial2.color = new Color(0.6f, 0.8f, 0.9f);
-        window2.GetComponent<Renderer>().material = windowMaterial2;
+    void CreateWallSection(string name, Transform parent, Vector3 localPosition, Vector3 localScale, Material material)
+    {
+        GameObject wallSection = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        wallSection.name = name;
+        wallSection.transform.parent = parent;
+        wallSection.transform.localPosition = localPosition;
+        wallSection.transform.localScale = localScale;
+        wallSection.GetComponent<Renderer>().material = material;
     }
 
     void GenerateTrees()
