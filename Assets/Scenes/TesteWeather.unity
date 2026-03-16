@@ -153,6 +153,20 @@ Transform:
   - {fileID: 232684238}
   m_Father: {fileID: 2144276635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &158559137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI Right Interaction/Activate
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 41976d89-60de-4deb-bff9-16b4af96b290
 --- !u!1 &172469036
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,20 +349,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
---- !u!114 &405420177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI Left Interaction/Select Value
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: e6005f29-e4c1-4f3b-8bf7-3a28bab5ca9c
 --- !u!1001 &495952384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactors.XRDirectInteractor
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 634999760}
   m_InteractionLayers:
     m_Bits: 1
   m_Handedness: 1
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_PhysicsLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  m_PhysicsTriggerInteraction: 1
+  m_PhysicsTriggerInteraction: 2
 --- !u!135 &952848771
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1107,20 +1107,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActionId: 0c3d0ec9-85a1-45b3-839b-1ca43f859ecd
---- !u!114 &1294418101
+--- !u!114 &1420242721 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2617907044084613064, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+  m_PrefabInstance: {fileID: 5713234838213401163}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI Left Interaction/Activate
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 0c0991c5-d329-4afc-8892-1076b440477c
+  m_Script: {fileID: 11500000, guid: 7e414ea20b0d5d14699cb6b2f7c454bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1458705153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,6 +1643,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1680555959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: XRI Right Interaction/Select Value
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_ActionId: 39bbf1ac-21a3-413d-90f6-6dbf6efeaabe
 --- !u!114 &1727059486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,7 +1835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactors.XRDirectInteractor
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 634999760}
   m_InteractionLayers:
     m_Bits: 1
   m_Handedness: 2
@@ -1870,7 +1881,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_InputActionReferencePerformed: {fileID: 2056207685}
-    m_InputActionReferenceValue: {fileID: 405420177}
+    m_InputActionReferenceValue: {fileID: 1680555959}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualPerformed: 0
     m_ManualValue: 0
@@ -1899,7 +1910,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_InputActionReferencePerformed: {fileID: 1294418101}
+    m_InputActionReferencePerformed: {fileID: 158559137}
     m_InputActionReferenceValue: {fileID: 915462737}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualPerformed: 0
@@ -2090,21 +2101,93 @@ PrefabInstance:
       propertyPath: m_Name
       value: Staff
       objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 634999760}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1420242721}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnActivated
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1420242721}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelectEntered
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: S_GetWeather, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: OnActivated
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: S_GetWeather, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: OnSelectEntered
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274155257212594496, guid: 9289754a26837264eaecbe9534990a24, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1675073692155712715, guid: 9289754a26837264eaecbe9534990a24, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.28208002
       objectReference: {fileID: 0}
     - target: {fileID: 1675073692155712715, guid: 9289754a26837264eaecbe9534990a24, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.33063
+      value: 0.93264115
       objectReference: {fileID: 0}
     - target: {fileID: 1675073692155712715, guid: 9289754a26837264eaecbe9534990a24, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.28208002
       objectReference: {fileID: 0}
     - target: {fileID: 1675073692155712715, guid: 9289754a26837264eaecbe9534990a24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.79
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 1675073692155712715, guid: 9289754a26837264eaecbe9534990a24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2112,7 +2195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1675073692155712715, guid: 9289754a26837264eaecbe9534990a24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.32
+      value: 0.87
       objectReference: {fileID: 0}
     - target: {fileID: 1675073692155712715, guid: 9289754a26837264eaecbe9534990a24, type: 3}
       propertyPath: m_LocalRotation.w
