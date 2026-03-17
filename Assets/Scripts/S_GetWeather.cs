@@ -62,6 +62,15 @@ public class S_GetWeather : MonoBehaviour
         public int    wind_direction_10m;
         public float  wind_gusts_10m;
     }
+    public enum WeatherCategory
+    {
+        Clear,
+        Cloudy,
+        Rain,
+        HeavyRain,
+        Snow,
+        HeavySnow
+    }
 
     [System.Serializable]
     private class WeatherResponse
@@ -166,6 +175,29 @@ public class S_GetWeather : MonoBehaviour
 
         // ?? Display on screen ??????????????????????????????????????????
         UpdateDisplay(BuildWeatherString());
+
+        // Switch sur le type de weather et demande au weather manager de changer la metero 
+        switch (WmoCodeToCategory(weatherCode))
+        {
+            case WeatherCategory.Clear:
+                WeatherManager.Instance.SetWeather(WeatherCategory.Clear, isDay == 1);
+                break;
+            case WeatherCategory.Cloudy:
+                WeatherManager.Instance.SetWeather(WeatherCategory.Cloudy, isDay == 1);
+                break;
+            case WeatherCategory.Rain:
+                WeatherManager.Instance.SetWeather(WeatherCategory.Rain, isDay == 1);
+                break;
+            case WeatherCategory.HeavyRain:
+                WeatherManager.Instance.SetWeather(WeatherCategory.HeavyRain, isDay == 1);
+                break;
+            case WeatherCategory.Snow:
+                WeatherManager.Instance.SetWeather(WeatherCategory.Snow, isDay == 1);
+                break;
+            case WeatherCategory.HeavySnow:
+                WeatherManager.Instance.SetWeather(WeatherCategory.HeavySnow, isDay == 1);
+                break;
+        }
     }
 
     // ??????????????????????????????????????????????????????????????????????
@@ -223,6 +255,46 @@ public class S_GetWeather : MonoBehaviour
             case 96: return "Thunderstorm w/ slight hail";
             case 99: return "Thunderstorm w/ heavy hail";
             default: return "Unknown";
+        }
+    }
+
+    private static WeatherCategory WmoCodeToCategory(int code)
+    {
+        switch (code)
+        {
+            case 0:
+            case 1:
+                return WeatherCategory.Clear;
+
+            case 2:
+            case 3:
+                return WeatherCategory.Cloudy;
+
+            case 51:
+            case 53:
+            case 55:
+            case 61:
+            case 63:
+            case 80:
+            case 81:
+                return WeatherCategory.Rain;
+
+            case 65:
+            case 82:
+                return WeatherCategory.HeavyRain;
+
+            case 71:
+            case 73:
+            case 77:
+            case 85:
+                return WeatherCategory.Snow;
+
+            case 75:
+            case 86:
+                return WeatherCategory.HeavySnow;
+
+            default:
+                return WeatherCategory.Clear;
         }
     }
 
