@@ -38,6 +38,7 @@ public class WeatherManager : MonoBehaviour
     public void SetWeather(S_GetWeather.WeatherCategory category, bool isDay)
     {
         StopAllParticles();
+        category = S_GetWeather.WeatherCategory.Rain; // Hard set to showcase
         switch (category)
         {
             case S_GetWeather.WeatherCategory.Clear:

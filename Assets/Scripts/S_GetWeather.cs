@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Networking;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -38,6 +39,16 @@ public class S_GetWeather : MonoBehaviour
     // ?? UI ?????????????????????????????????????????????????????????????????
     private TextMesh displayText;
 
+    [Header("Sound & VFX")]
+    [SerializeField] private AudioClip fetchSound;
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private GameObject[] vfxPrefabs;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Vector3 vfxOffset = new Vector3(0f, 0.05f, 0f);
+
+    private GameObject currentVfx;
+
     // ??????????????????????????????????????????????????????????????????????
     //  JSON data classes (JsonUtility-compatible)
     // ??????????????????????????????????????????????????????????????????????
@@ -61,6 +72,9 @@ public class S_GetWeather : MonoBehaviour
         public float  wind_speed_10m;
         public int    wind_direction_10m;
         public float  wind_gusts_10m;
+
+
+        
     }
     public enum WeatherCategory
     {
@@ -198,6 +212,8 @@ public class S_GetWeather : MonoBehaviour
                 WeatherManager.Instance.SetWeather(WeatherCategory.HeavySnow, isDay == 1);
                 break;
         }
+        PlayFetchSound();
+        SpawnRandomVFX();
     }
 
     // ??????????????????????????????????????????????????????????????????????
@@ -329,4 +345,39 @@ public class S_GetWeather : MonoBehaviour
         if (meshRenderer != null)
             meshRenderer.material.color = color;
     }
+    private void PlayFetchSound()
+    {
+        if (audioSource != null && fetchSound != null)
+            audioSource.PlayOneShot(fetchSound);
+        else
+            Debug.LogWarning("AudioSource ou fetchSound manquant sur S_GetWeather.");
+    }
+
+    private void SpawnRandomVFX()
+    {
+        if (vfxPrefabs == null || vfxPrefabs.Length == 0)
+        {
+            Debug.LogWarning("Aucun VFX prefab assigné dans vfxPrefabs.");
+            return;
+        }
+
+        // Détruire le VFX précédent s'il existe encore
+        if (currentVfx != null)
+            Destroy(currentVfx);
+
+        // Choisir un VFX aléatoire
+        int index = Random.Range(0, vfxPrefabs.Length);
+        GameObject chosenVfx = vfxPrefabs[index];
+
+        // Position = sous le joueur (au sol)
+        Transform spawnParent = playerTransform != null ? playerTransform : transform;
+        Vector3 spawnPos = spawnParent.position + vfxOffset;
+
+        currentVfx = Instantiate(chosenVfx, spawnPos, Quaternion.identity);
+
+        // Auto-destroy après 5 secondes (si ton VFX n'a pas de durée propre)
+        Destroy(currentVfx, 5f);
+    }
+
+
 }
