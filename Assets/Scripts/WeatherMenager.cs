@@ -9,6 +9,11 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private ParticleSystem rainParticles;
     [SerializeField] private ParticleSystem snowParticles;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource weatherAudioSource;
+    [SerializeField] private AudioClip rainSound;
+    [SerializeField] private AudioClip snowSound;
+
     [Header("Lighting")]
     [SerializeField] private Light sunLight;
     [SerializeField] private Color dayColor = new Color(1.00f, 0.95f, 0.85f);
@@ -36,18 +41,21 @@ public class WeatherManager : MonoBehaviour
         switch (category)
         {
             case S_GetWeather.WeatherCategory.Clear:
+                StopWeatherSound();
                 ApplyLighting(isDay ? 1.2f : 0.05f, isDay ? dayColor : nightColor);
                 ApplySky(isDay ? skyDay : skyNight);
                 SetFog(false, Color.white, 0f);
                 break;
 
             case S_GetWeather.WeatherCategory.Cloudy:
+                StopWeatherSound();
                 ApplyLighting(isDay ? 0.55f : 0.05f, isDay ? dayColor : nightColor);
                 ApplySky(skyCloudy);
                 SetFog(false, skyCloudy, 0f);
                 break;
 
             case S_GetWeather.WeatherCategory.Rain:
+                PlayWeatherSound(rainSound, 0.6f);
                 Play(rainParticles, 350);
                 ApplyLighting(0.30f, rainColor);
                 ApplySky(skyRain);
@@ -55,6 +63,7 @@ public class WeatherManager : MonoBehaviour
                 break;
 
             case S_GetWeather.WeatherCategory.HeavyRain:
+                PlayWeatherSound(rainSound, 1.0f);
                 Play(rainParticles, 600);
                 ApplyLighting(0.15f, rainColor);
                 ApplySky(skyRain);
@@ -62,6 +71,7 @@ public class WeatherManager : MonoBehaviour
                 break;
 
             case S_GetWeather.WeatherCategory.Snow:
+                PlayWeatherSound(snowSound, 0.4f);
                 Play(snowParticles, 120);
                 ApplyLighting(isDay ? 0.60f : 0.05f, snowColor);
                 ApplySky(skySnow);
@@ -69,6 +79,7 @@ public class WeatherManager : MonoBehaviour
                 break;
 
             case S_GetWeather.WeatherCategory.HeavySnow:
+                PlayWeatherSound(snowSound, 0.7f);
                 Play(snowParticles, 400);
                 ApplyLighting(isDay ? 0.40f : 0.05f, snowColor);
                 ApplySky(skySnow);
@@ -77,7 +88,24 @@ public class WeatherManager : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
+   
+    private void PlayWeatherSound(AudioClip clip, float volume)
+    {
+        if (weatherAudioSource == null || clip == null) return;
+        if (weatherAudioSource.clip == clip && weatherAudioSource.isPlaying) return;
+        weatherAudioSource.clip = clip;
+        weatherAudioSource.loop = false;
+        weatherAudioSource.volume = volume;
+        weatherAudioSource.Play();
+    }
+
+    private void StopWeatherSound()
+    {
+        if (weatherAudioSource == null) return;
+        weatherAudioSource.Stop();
+        weatherAudioSource.clip = null;
+    }
+
     private void Play(ParticleSystem ps, int emissionRate)
     {
         if (ps == null) return;
@@ -113,7 +141,7 @@ public class WeatherManager : MonoBehaviour
         RenderSettings.fogDensity = density;
     }
 
-    // ── Transitions douces ────────────────────────────────────────────────────
+
     private IEnumerator SmoothLight(float fromI, float toI,
                                     Color fromC, Color toC, float duration)
     {

@@ -304,9 +304,9 @@ public class S_GetWeather : MonoBehaviour
         GameObject textGO = new GameObject("WeatherDisplay");
         textGO.transform.SetParent(transform, false);
         // Position the panel slightly above and in front of the object
-        textGO.transform.localPosition = new Vector3(0f, 0.25f, 0f);
-        textGO.transform.localRotation = Quaternion.identity;
-        textGO.transform.localScale    = Vector3.one * 0.004f;
+        textGO.transform.localPosition = new Vector3(0.3f, 0.25f, 0f);
+        textGO.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+        textGO.transform.localScale    = Vector3.one * 0.006f;
 
         displayText = textGO.AddComponent<TextMesh>();
         displayText.fontSize  = 24;
